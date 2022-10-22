@@ -3,14 +3,31 @@ services:
   grafana:
     container_name: grafana
     image: grafana/grafana-oss:latest
+    restart: unless-stopped
     ports:
       - 3000:3000
     volumes:
       - grafana-data:/var/lib/grafana
   
+  cadvisor:
+    container_name: cadvisor
+    image: zcube/cadvisor:latest
+    restart: unless-stopped
+    ports:
+      - 10000:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /dev/disk:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+  
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
+    restart: unless-stopped
     ports:
       - 9000:9090
     volumes:
