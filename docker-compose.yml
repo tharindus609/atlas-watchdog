@@ -1,0 +1,25 @@
+version: '3'
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-oss:latest
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+  
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    ports:
+      - 9000:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+
+
+volumes:
+  grafana-data:
+  prometheus-data:
