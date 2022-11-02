@@ -43,7 +43,7 @@ services:
     network_mode: host
     pid: host
     volumes:
-      - /:/hostLro,rslave
+      - /:/host:ro,rslave
     command:
       - '--path.rootfs=/host'
       - '--collector.systemd'
