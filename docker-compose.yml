@@ -35,6 +35,19 @@ services:
       - prometheus-data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
+  
+  node-exporter:
+    container_name: node_exporter
+    image: quay.io/prometheus/node-exporter:latest
+    restart: unless-stopped
+    network_mode: host
+    pid: host
+    volumes:
+      - /:/hostLro,rslave
+    command:
+      - '--path.rootfs=/host'
+      - '--collector.systemd'
+      - '--collector.processes'
 
 
 volumes:
