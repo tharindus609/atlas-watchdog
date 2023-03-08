@@ -9,7 +9,7 @@ scrape_configs:
   - job_name: "asguard"
     # scrape_interval: 10s
     static_configs:
-      - targets: ["192.168.0.100:9182"]
+      - targets: ["asuard:9182"]
   
   - job_name: "cadvisor"
     static_configs:
@@ -17,12 +17,12 @@ scrape_configs:
   
   - job_name: "nginx"
     static_configs:
-      - targets: ["192.168.0.200:9113"]
+      - targets: ["picore:9113"]
   
   - job_name: "grafana"
     static_configs:
-      - targets: ["192.168.0.200:3000"]
+      - targets: ["olympus:3000"]
   
   - job_name: "picore"
     static_configs:
-      - targets: ["192.168.0.200:9100"]
+      - targets: ["picore:9100"]
