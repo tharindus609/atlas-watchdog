@@ -9,7 +9,7 @@ scrape_configs:
   - job_name: "asguard"
     # scrape_interval: 10s
     static_configs:
-      - targets: ["asuard:9182"]
+      - targets: ["asguard:9182"]
   
   - job_name: "cadvisor"
     static_configs:
