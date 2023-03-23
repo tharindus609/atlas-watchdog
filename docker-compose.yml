@@ -18,6 +18,13 @@ services:
     volumes:
       - loki-data:/loki
   
+  promtail:
+    container_name: promtail
+    image: grafana/promtail:latest
+    restart: unless-stopped
+    volumes:
+      - /var/log:/var/log
+  
   cadvisor:
     container_name: cadvisor
     image: zcube/cadvisor:latest
