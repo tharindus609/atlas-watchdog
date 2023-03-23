@@ -23,6 +23,10 @@ scrape_configs:
     static_configs:
       - targets: ["olympus:3000"]
   
+  - job_name: "loki"
+    static_configs:
+      - targets: ["loki:3100"]
+  
   - job_name: "linux-node-exporter"
     static_configs:
       - targets: ["picore:9200"]

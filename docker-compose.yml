@@ -17,6 +17,7 @@ services:
       - 3100:3100
     volumes:
       - loki-data:/loki
+    command: -config.file=/etc/loki/local-config.yaml
   
   promtail:
     container_name: promtail
@@ -24,6 +25,7 @@ services:
     restart: unless-stopped
     volumes:
       - /var/log:/var/log
+    command: -config.file=/etc/promtail/config.yml
   
   cadvisor:
     container_name: cadvisor
