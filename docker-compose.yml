@@ -52,10 +52,10 @@ services:
     ports:
       - 9000:9090
     volumes:
-      - ./prometheus:/etc/prometheus
+      - ./configs/prometheus-config.yaml:/etc/prometheus/prometheus-config.yaml
       - prometheus-data:/prometheus
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--config.file=/etc/prometheus/prometheus-config.yaml'
   
   node-exporter:
     container_name: node_exporter
