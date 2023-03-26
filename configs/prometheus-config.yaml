@@ -13,7 +13,8 @@ scrape_configs:
   
   - job_name: "cadvisor"
     static_configs:
-      - targets: ["cadvisor:8080"]
+      - targets: ["olympus:9102"]
+      - targets: ["picore:9102"]
   
   - job_name: "caddy"
     static_configs:
@@ -26,11 +27,6 @@ scrape_configs:
   - job_name: "loki"
     static_configs:
       - targets: ["loki:3100"]
-  
-  - job_name: "linux-node-exporter"
-    static_configs:
-      - targets: ["picore:9100"]
-      - targets: ["olympus:9100"]
   
   - job_name: "home-watch"
     static_configs:

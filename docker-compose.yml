@@ -19,15 +19,6 @@ services:
       - loki-data:/loki
     command: -config.file=/etc/loki/local-config.yaml
   
-  promtail:
-    container_name: promtail
-    image: grafana/promtail:latest
-    restart: unless-stopped
-    volumes:
-      - ./configs/promtail-config.yaml:/etc/promtail/promtail-config.yaml
-      - /var/log:/var/log
-    command: -config.file=/etc/promtail/promtail-config.yaml
-  
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
