@@ -28,21 +28,6 @@ services:
       - /var/log:/var/log
     command: -config.file=/etc/promtail/promtail-config.yaml
   
-  cadvisor:
-    container_name: cadvisor
-    image: zcube/cadvisor:latest
-    restart: unless-stopped
-    ports:
-      - 10000:8080
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker:/var/lib/docker:ro
-      - /dev/disk:/dev/disk:ro
-    devices:
-      - /dev/kmsg
-  
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
@@ -56,20 +41,6 @@ services:
       - prometheus-data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus-config.yaml'
-  
-  node-exporter:
-    container_name: node_exporter
-    image: quay.io/prometheus/node-exporter:latest
-    restart: unless-stopped
-    network_mode: host
-    pid: host
-    volumes:
-      - /:/host:ro,rslave
-    command:
-      - '--path.rootfs=/host'
-      - '--collector.systemd'
-      - '--collector.processes'
-
 
 volumes:
   grafana-data:
