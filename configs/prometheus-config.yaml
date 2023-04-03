@@ -31,3 +31,7 @@ scrape_configs:
   - job_name: "home-watch"
     static_configs:
       - targets: ["picore:9101"]
+  
+  - job_name: "system-watch"
+    static_configs:
+      - targets: ["olympus:9104"]
