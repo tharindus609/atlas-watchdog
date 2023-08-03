@@ -15,6 +15,7 @@ scrape_configs:
     static_configs:
       - targets: ["olympus:9102"]
       - targets: ["picore:9102"]
+      - targets: ["pi-node-2:9102"]
   
   - job_name: "caddy"
     static_configs:
